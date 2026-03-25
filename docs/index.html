@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Bitbucket Buddy — browser extension that formats merge commit messages on Bitbucket pull requests. Chrome and Firefox."
+    />
+    <title>Bitbucket Buddy — merge messages for Bitbucket PRs</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./">
+          <img src="assets/logo.png" width="36" height="36" alt="" />
+          Bitbucket Buddy
+        </a>
+        <nav class="nav" aria-label="Page">
+          <a href="#features">Features</a>
+          <a href="#screenshots">Screenshots</a>
+          <a href="#get-extension">Get the extension</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <h1>Clearer merge commit messages, automatically</h1>
+            <p class="hero-lead">
+              A browser extension that reformats Bitbucket’s default squash and merge text into a
+              readable PR title and optional details—per merge strategy, with settings synced across
+              popup and side panel.
+            </p>
+            <div class="hero-actions">
+              <a
+                class="btn btn-chrome"
+                href="https://chromewebstore.google.com/detail/bitbucket-commit-message/faedfmleddnnpddecmjfgghnopopojeg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img class="btn-icon-img" src="assets/chrome.svg" width="20" height="20" alt="" />
+                Add to Chrome
+              </a>
+              <a
+                class="btn btn-firefox firefox-addon"
+                href="javascript:void(0)"
+                title="Mozilla Add-ons link coming soon"
+              >
+                <img class="btn-icon-img" src="assets/firefox.svg" width="20" height="20" alt="" />
+                Add to Firefox
+              </a>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <img src="assets/logo.png" width="112" height="112" alt="Bitbucket Buddy logo" />
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="wrap">
+          <h2>What you get</h2>
+          <p class="section-intro">
+            On Bitbucket PR pages, when you open <strong>Merge pull request</strong>, the extension
+            can replace Bitbucket’s “Merged in …” style message with your chosen format—only when the
+            pattern matches, so unexpected text stays untouched.
+          </p>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12h8" />
+                  <path d="M4 18V6" />
+                  <path d="M12 18V6h4a3 3 0 0 1 0 6 3 3 0 0 1 0 6H12" />
+                </svg>
+              </div>
+              <h3>Message formats</h3>
+              <p>
+                Choose <strong>default Bitbucket text</strong>, <strong>PR title only</strong>, or
+                <strong>title plus commit details</strong>—same options as in the app, stored in
+                extension storage.
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </div>
+              <h3>Per merge strategy</h3>
+              <p>
+                Toggle the formatter independently for <strong>merge</strong>, <strong>squash</strong>,
+                and <strong>rebase</strong> so each workflow behaves the way your team expects.
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M3 9h18" />
+                  <path d="M9 21V9" />
+                </svg>
+              </div>
+              <h3>Popup &amp; side panel</h3>
+              <p>
+                Open settings from the toolbar <strong>popup</strong> or, in Chrome, the
+                <strong>side panel</strong>; Firefox uses the sidebar with the same UI.
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 16v-4" />
+                  <path d="M12 8h.01" />
+                </svg>
+              </div>
+              <h3>Optional feedback</h3>
+              <p>
+                Enable a quick <strong>toast</strong> when a message is replaced so you know the
+                extension ran—without blocking the merge flow.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="screenshots">
+        <div class="wrap">
+          <h2>Screenshots</h2>
+          <p class="section-intro">
+            Settings live in the popup and side panel; the merge dialog shows Bitbucket’s UI with your
+            formatted commit message when a replacement applies.
+          </p>
+          <div class="shot-grid">
+            <figure class="shot-card">
+              <img
+                src="assets/screenshot-1.png"
+                width="1280"
+                height="800"
+                loading="lazy"
+                alt="Extension settings: merge strategies and commit message format"
+              />
+              <figcaption>
+                <strong>Settings</strong>
+                Toolbar popup or side panel—merge strategy toggles and default commit message style.
+              </figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img
+                src="assets/screenshot-2.png"
+                width="1280"
+                height="800"
+                loading="lazy"
+                alt="Bitbucket merge pull request dialog with commit message"
+              />
+              <figcaption>
+                <strong>Merge dialog</strong>
+                Where Bitbucket shows the commit message; Buddy rewrites it when the pattern matches.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="get-extension">
+        <div class="wrap">
+          <div class="cta-panel">
+            <h2>Install Bitbucket Buddy</h2>
+            <div class="cta-actions">
+              <a
+                class="btn btn-chrome"
+                href="https://chromewebstore.google.com/detail/bitbucket-commit-message/faedfmleddnnpddecmjfgghnopopojeg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img class="btn-icon-img" src="assets/chrome.svg" width="20" height="20" alt="" />
+                Add to Chrome
+              </a>
+              <a
+                class="btn btn-firefox firefox-addon"
+                href="javascript:void(0)"
+                title="Mozilla Add-ons link coming soon"
+              >
+                <img class="btn-icon-img" src="assets/firefox.svg" width="20" height="20" alt="" />
+                Add to Firefox
+              </a>
+              <a
+                class="btn btn-github"
+                href="https://github.com/earthling-std/bitbucket-buddy-extension"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img class="btn-icon-img" src="assets/github.svg" width="20" height="20" alt="" />
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          <a
+            href="https://github.com/earthling-std/bitbucket-buddy-extension"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Bitbucket Buddy</a>
+          ·
+          <a
+            href="https://chromewebstore.google.com/detail/bitbucket-commit-message/faedfmleddnnpddecmjfgghnopopojeg"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Chrome Web Store</a>
+          — not affiliated with Atlassian. Bitbucket is a trademark of Atlassian.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
