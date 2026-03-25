@@ -1,4 +1,5 @@
-import { toast } from 'sonner';
+import { getExtensionApi } from '@/lib/extensionApi';
+import { showContentToast } from './toast';
 import {
   DEFAULT_MERGE_FORMATTER_SETTINGS,
   MERGE_FORMATTER_STORAGE_KEY,
@@ -46,7 +47,7 @@ function findMergeDialogForTextarea(textarea: HTMLTextAreaElement): Element | nu
 let cachedSettings: MergeFormatterSettings = { ...DEFAULT_MERGE_FORMATTER_SETTINGS };
 
 async function refreshSettingsFromStorage(): Promise<void> {
-  const raw = await chrome.storage.local.get(MERGE_FORMATTER_STORAGE_KEY);
+  const raw = await getExtensionApi().storage.local.get(MERGE_FORMATTER_STORAGE_KEY);
   cachedSettings = parseMergeFormatterSettings(raw[MERGE_FORMATTER_STORAGE_KEY]);
 }
 
@@ -78,7 +79,7 @@ function tryTransformMergeMessage(textarea: HTMLTextAreaElement): void {
 
   if (!replacedToastSent.has(textarea)) {
     replacedToastSent.add(textarea);
-    toast.success('Commit message updated.');
+    showContentToast('Commit message updated.');
   }
 }
 
@@ -109,7 +110,7 @@ function startPollingIfNeeded(): void {
 export function initMergeMessageTransform(): void {
   void refreshSettingsFromStorage();
 
-  chrome.storage.onChanged.addListener((changes, area) => {
+  getExtensionApi().storage.onChanged.addListener((changes, area) => {
     if (area !== 'local') return;
     const ch = changes[MERGE_FORMATTER_STORAGE_KEY];
     if (ch?.newValue !== undefined) {

@@ -1,14 +1,13 @@
-# React + Vite + CRXJS
+# Bitbucket merge commit message — Vite + CRXJS
 
-This template helps you quickly start developing Chrome extensions with React, TypeScript and Vite. It includes the CRXJS Vite plugin for seamless Chrome extension development.
+TypeScript extension (vanilla DOM in popup, side panel, and content scripts — no React) built with Vite and the CRXJS plugin.
 
 ## Features
 
-- React with TypeScript
-- TypeScript support
+- TypeScript
 - Vite build tool
 - CRXJS Vite plugin integration
-- Chrome extension manifest configuration
+- Chrome (`side_panel`) and Firefox (`sidebar_action`) manifests
 
 ## Quick Start
 
@@ -29,24 +28,28 @@ npm run dev
 4. Build for production:
 
 ```bash
-npm run build
+npm run build:chrome
+# or
+npm run build:firefox
 ```
 
 ## Project Structure
 
 - `src/popup/` - Extension popup UI
+- `src/sidepanel/` - Side panel / Firefox sidebar UI
 - `src/content/` - Content scripts
-- `manifest.config.ts` - Chrome extension manifest configuration
+- `src/lib/mountSettingsUi.ts` - Shared settings UI (DOM APIs)
+- `manifest.config.ts` - Shared manifest fields (Chrome + Firefox)
+- `manifest.chrome.ts` / `manifest.firefox.ts` - Picked via `TARGET_BROWSER` in `vite.config.ts`
 
 ## Documentation
 
-- [React Documentation](https://reactjs.org/)
-- [Vite Documentation](https://vitejs.dev/)
+- [Vite Documentation](https://vite.dev/)
 - [CRXJS Documentation](https://crxjs.dev/vite-plugin)
 
-## Chrome Extension Development Notes
+## Extension development notes
 
-- Use `manifest.config.ts` to configure your extension
-- The CRXJS plugin automatically handles manifest generation
-- Content scripts should be placed in `src/content/`
-- Popup UI should be placed in `src/popup/`
+- Edit `manifest.config.ts` and `manifest.chrome.ts` / `manifest.firefox.ts` as needed (`npm run build:firefox` sets `TARGET_BROWSER=firefox`)
+- The CRXJS plugin handles manifest generation
+- Content scripts live in `src/content/`
+- Popup UI lives in `src/popup/`

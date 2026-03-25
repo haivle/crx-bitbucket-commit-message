@@ -1,3 +1,5 @@
+import { getExtensionApi } from '@/lib/extensionApi';
+
 export const MERGE_FORMATTER_STORAGE_KEY = 'mergeFormatterSettings';
 
 /** How to rewrite the merge dialog commit message when a strategy is enabled. */
@@ -131,14 +133,14 @@ export function mergeFormatterAllowedForLabel(
 }
 
 export async function loadMergeFormatterSettings(): Promise<MergeFormatterSettings> {
-  const raw = await chrome.storage.local.get(MERGE_FORMATTER_STORAGE_KEY);
+  const raw = await getExtensionApi().storage.local.get(MERGE_FORMATTER_STORAGE_KEY);
   return parseMergeFormatterSettings(raw[MERGE_FORMATTER_STORAGE_KEY]);
 }
 
 export async function saveMergeFormatterSettings(
   settings: MergeFormatterSettings,
 ): Promise<void> {
-  await chrome.storage.local.set({ [MERGE_FORMATTER_STORAGE_KEY]: settings });
+  await getExtensionApi().storage.local.set({ [MERGE_FORMATTER_STORAGE_KEY]: settings });
 }
 
 /** Read current strategy label from the merge modal (react-select). */

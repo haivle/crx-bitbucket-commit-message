@@ -1,10 +1,16 @@
 import path from 'node:path'
 import { crx } from '@crxjs/vite-plugin'
-import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import zip from 'vite-plugin-zip-pack'
-import manifest from './manifest.config.js'
 import { name, version } from './package.json'
+
+const browserTarget = process.env.TARGET_BROWSER === 'firefox' ? 'firefox' : 'chrome'
+const zipPrefix = browserTarget === 'firefox' ? 'firefox' : 'chrome'
+
+const manifest =
+  browserTarget === 'firefox'
+    ? (await import('./manifest.firefox.ts')).default
+    : (await import('./manifest.chrome.ts')).default
 
 export default defineConfig({
   resolve: {
@@ -13,15 +19,12 @@ export default defineConfig({
     },
   },
   plugins: [
-    react(),
     crx({ manifest }),
-    zip({ outDir: 'release', outFileName: `crx-${name}-${version}.zip` }),
+    zip({ outDir: 'release', outFileName: `${zipPrefix}-${name}-${version}.zip` }),
   ],
   server: {
     cors: {
-      origin: [
-        /chrome-extension:\/\//,
-      ],
+      origin: [/chrome-extension:\/\//, /moz-extension:\/\//],
     },
   },
 })
