@@ -48,7 +48,11 @@ export default defineConfig({
     firefoxSidepanelBundleShim(),
     crx({ manifest, browser: browserTarget }),
     firefoxStripChromeOnlyManifestKeys(),
-    zip({ outDir: 'release', outFileName: `${zipPrefix}-${name}-${version}.zip` }),
+    zip({
+      outDir: 'release',
+      outFileName: `${zipPrefix}-${name}-${version}.zip`,
+      filter: (fileName) => fileName !== '.DS_Store',
+    }),
   ],
   server: {
     cors: {

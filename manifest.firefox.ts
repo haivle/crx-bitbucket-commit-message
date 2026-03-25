@@ -11,7 +11,7 @@ export default defineManifest({
   browser_specific_settings: {
     gecko: {
       id: '{7c3f2a91-4d8e-4b2f-9c1a-0e2fb4c8d7a3}',
-      strict_min_version: '109.0',
+      strict_min_version: '142.0',
       data_collection_permissions: {
         required: ['none'],
       },
@@ -21,8 +21,10 @@ export default defineManifest({
     default_title: 'Merge message settings',
     default_panel: sidePanelPath,
     default_icon: {
-      48: 'public/logo.png',
-      128: 'public/logo.png',
+      16: 'public/logo-16.png',
+      32: 'public/logo-32.png',
+      48: 'public/logo-48.png',
+      128: 'public/logo-128.png',
     },
   },
 } as unknown as Parameters<typeof defineManifest>[0])
