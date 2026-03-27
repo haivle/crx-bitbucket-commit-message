@@ -21,7 +21,7 @@ export function bitbucketRepoPathMatches(maxSegments = 25): string[] {
 /** Fields common to Chrome and Firefox builds. */
 export const manifestConfig = {
   manifest_version: 3 as const,
-  name: 'Bitbucket buddy',
+  name: 'Bitbucket Buddy',
   description: 'Format the commit message for Bitbucket pull requests',
   version: pkg.version,
   icons: {
