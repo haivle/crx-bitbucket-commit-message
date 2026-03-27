@@ -70,7 +70,11 @@ function tryTransformMergeMessage(textarea: HTMLTextAreaElement): void {
 
   const lineFormat = mode === 'pr_title_only' ? 'pr_title_only' : 'pr_title_and_details';
 
-  const next = transformBitbucketMergeCommitMessage(value, lineFormat);
+  const next = transformBitbucketMergeCommitMessage(
+    value,
+    lineFormat,
+    cachedSettings.shortPrReference,
+  );
   if (next === null || next === value) return;
 
   setNativeTextareaValue(textarea, next);

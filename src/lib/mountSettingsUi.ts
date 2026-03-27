@@ -11,7 +11,7 @@ import '@/components/Settings.css';
 function appendCheckboxRow(
   ul: HTMLUListElement,
   getSettings: () => MergeFormatterSettings,
-  key: 'mergeCommits' | 'squashCommits' | 'rebaseCommits',
+  key: 'mergeCommits' | 'squashCommits' | 'rebaseCommits' | 'shortPrReference',
   title: string,
   hint: string,
   persist: (next: MergeFormatterSettings) => void,
@@ -144,6 +144,19 @@ export function mountSettingsUi(root: HTMLElement): void {
 
     field.appendChild(select);
     sec2.appendChild(field);
+
+    const ulPrRef = document.createElement('ul');
+    ulPrRef.className = 'settings-list settings-list--after-commit-field';
+    appendCheckboxRow(
+      ulPrRef,
+      getSettings,
+      'shortPrReference',
+      'Use short PR reference',
+      'Use (PR #N) instead of (pull request #N) in commit message.',
+      persist,
+    );
+    sec2.appendChild(ulPrRef);
+
     shell.appendChild(sec2);
 
     root.appendChild(shell);

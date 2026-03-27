@@ -50,6 +50,10 @@
   gap: 0.75rem;
 }
 
+.settings-list--after-commit-field {
+  margin-top: 1rem;
+}
+
 .settings-commit-field {
   display: flex;
   flex-direction: column;

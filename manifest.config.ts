@@ -2,6 +2,22 @@ import pkg from './package.json'
 
 export const sidePanelPath = 'src/sidepanel/index.html' as const
 
+/**
+ * Bitbucket Cloud is a SPA: content scripts are registered on the *initial* load URL only.
+ * If the user lands on e.g. /workspace/repo/src/branch/... and later navigates to a pull request,
+ * the page does not reload, so matches limited to /pull-requests/... never inject.
+ *
+ * Each pattern matches a fixed number of path segments after the host (`*` = one segment).
+ * Depth 2 covers repo root; deeper paths cover source browser, nested branches, PR routes, etc.
+ */
+export function bitbucketRepoPathMatches(maxSegments = 25): string[] {
+  const out: string[] = []
+  for (let n = 2; n <= maxSegments; n++) {
+    out.push(`https://bitbucket.org/${Array(n).fill('*').join('/')}`)
+  }
+  return out
+}
+
 /** Fields common to Chrome and Firefox builds. */
 export const manifestConfig = {
   manifest_version: 3 as const,
@@ -27,10 +43,7 @@ export const manifestConfig = {
   content_scripts: [
     {
       js: ['src/content/bootstrap.ts'],
-      matches: [
-        'https://bitbucket.org/*/*/pull-requests/*',
-        'https://bitbucket.org/*/*/pull-request/*',
-      ],
+      matches: bitbucketRepoPathMatches(),
       run_at: 'document_idle' as const,
     },
   ],

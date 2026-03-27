@@ -14,6 +14,8 @@ export type MergeFormatterSettings = {
   rebaseCommits: boolean;
   /** Single format applied to every enabled merge strategy. */
   commitMessage: DefaultCommitMessageMode;
+  /** When true, formatted line uses `(PR #N)` instead of `(pull request #N)`. */
+  shortPrReference: boolean;
 };
 
 /**
@@ -25,6 +27,7 @@ export const DEFAULT_MERGE_FORMATTER_SETTINGS: MergeFormatterSettings = {
   squashCommits: true,
   rebaseCommits: true,
   commitMessage: 'pr_title_and_details',
+  shortPrReference: true,
 };
 
 const VALID_MODES: DefaultCommitMessageMode[] = [
@@ -48,6 +51,9 @@ export function parseMergeFormatterSettings(raw: unknown): MergeFormatterSetting
   if (typeof o.rebaseCommits === 'boolean') base.rebaseCommits = o.rebaseCommits;
   if (isDefaultCommitMessageMode(o.commitMessage)) {
     base.commitMessage = o.commitMessage;
+  }
+  if (typeof o.shortPrReference === 'boolean') {
+    base.shortPrReference = o.shortPrReference;
   }
   // Missing or invalid `commitMessage` keeps `base.commitMessage` === `pr_title_and_details`.
 
