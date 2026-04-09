@@ -1,10 +1,9 @@
 import { defineManifest } from '@crxjs/vite-plugin'
-import { manifestConfig, sidePanelPath } from './manifest.config'
+import { manifestConfig } from './manifest.config'
 
 /**
- * Firefox uses `sidebar_action` only. `side_panel` is Chrome-specific; the Vite config adds it
- * temporarily during the CRXJS build so the sidepanel HTML is still bundled, then strips it from
- * the emitted manifest.
+ * `side_panel` is Chrome-specific; the Vite config adds it temporarily during the CRXJS build
+ * so the sidepanel HTML is still bundled, then strips it from the emitted manifest.
  */
 export default defineManifest({
   ...manifestConfig,
@@ -15,16 +14,6 @@ export default defineManifest({
       data_collection_permissions: {
         required: ['none'],
       },
-    },
-  },
-  sidebar_action: {
-    default_title: 'Merge message settings',
-    default_panel: sidePanelPath,
-    default_icon: {
-      16: 'public/logo-16.png',
-      32: 'public/logo-32.png',
-      48: 'public/logo-48.png',
-      128: 'public/logo-128.png',
     },
   },
 } as unknown as Parameters<typeof defineManifest>[0])
