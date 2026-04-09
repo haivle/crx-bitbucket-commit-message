@@ -81,3 +81,189 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.6rem;
+}
+
+.popup-header-title {
+  font-family: "Nunito Sans", -apple-system, Neuton, sans-serif;
+  color: #83b537;
+  font-size: 20px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.popup-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.popup-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #485e75;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: background-color 0.15s, opacity 0.15s;
+}
+
+.popup-icon-btn:hover {
+  background-color: rgb(217, 224, 232);
+  opacity: 1;
+  border-color: transparent;
+}
+
+.popup-icon-btn:focus-visible {
+  outline: 2px solid rgb(217, 224, 232);
+  outline-offset: 1px;
+}
+
+.popup-app {
+  padding: 24px;
+  text-align: left;
+}
+
+.popup-tab-bar {
+  display: flex;
+  border-bottom: 1.5px solid rgba(127, 127, 127, 0.2);
+  padding: 0 0;
+  margin-bottom: 12px;
+  gap: 16px;
+}
+
+.popup-tab {
+  position: relative;
+  padding: 0.55rem 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.popup-tab:focus {
+  outline: none;
+}
+
+.popup-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background-color: #83b537;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.popup-tab--active {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.popup-tab--active::after {
+  opacity: 1;
+}
+
+.popup-tab:hover:not(.popup-tab--active) {
+  opacity: 0.8;
+  border-color: transparent;
+}
+
+.popup-tab-panel {
+  min-height: 140px;
+}
+
+.popup-repos {
+  padding: 0 0;
+}
+
+.popup-repo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.popup-repo-item:hover {
+  background-color: rgba(127, 127, 127, 0.12);
+  border-color: transparent;
+}
+
+.popup-repo-icon {
+  flex-shrink: 0;
+  opacity: 0.55;
+  display: flex;
+}
+
+.popup-repo-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.popup-repo-name {
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popup-repo-subtitle {
+  font-size: 13px;
+  opacity: 0.55;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popup-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.75rem 1rem 1.5rem;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.popup-empty-icon {
+  display: flex;
+}
+
+.popup-empty-text {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}

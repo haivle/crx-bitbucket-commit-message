@@ -1,7 +1,6 @@
 import { getExtensionApi } from '@/lib/extensionApi';
 import { buildHeader } from '@/lib/mountSettingsUi';
 import { loadRecentRepos, RECENT_REPOS_STORAGE_KEY, type RecentRepo } from '@/lib/recentRepos';
-import './App.css';
 import './index.css';
 
 const REPO_ICON =
